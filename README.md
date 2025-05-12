@@ -162,7 +162,3 @@ spec:
 3. Apply Terraform root module
 4. Access the application through the configured ingress endpoint
 ![image](https://github.com/user-attachments/assets/04658159-5cb6-4076-be88-e4352e721580)
-
-## License
-
-[Your license information here]
