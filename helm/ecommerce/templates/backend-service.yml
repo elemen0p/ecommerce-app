@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecommerce-backend
+  labels:
+    app.kubernetes.io/name: ecommerce
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: ecommerce-backend
+spec:
+  selector:
+    app: ecommerce-backend
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: ClusterIP

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecommerce-frontend
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+  labels:
+    app.kubernetes.io/name: ecommerce
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: ecommerce-frontend
+spec:
+  selector:
+    app: ecommerce-frontend
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
