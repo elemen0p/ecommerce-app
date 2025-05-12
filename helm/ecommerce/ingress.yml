@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-https
+  labels:
+    app.kubernetes.io/name: ecommerce
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.allow-http: "false"
+    ingress.gcp.kubernetes.io/v1beta1.BackendConfig: '{"healthCheck":{"checkIntervalSec":10,"timeoutSec":5,"healthyThreshold":1,"unhealthyThreshold":3,"requestPath":"/","port":80}}'
+spec:
+  tls:
+  - secretName: frontend-tls
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ecommerce-frontend
+            port:
+              number: 80
