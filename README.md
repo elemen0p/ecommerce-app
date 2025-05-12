@@ -11,9 +11,10 @@ This repository contains a cloud-native e-commerce application built on Google C
 - Replicated workloads with topology constraints
 
 ### Disaster Recovery (DR)
+Not fully implemented but an implementation strategy is described:
 - VPC spanning two different regions
 - Standby instance of the entire system in the secondary region
-- Google Cloud Load Balancer routing traffic to public egress IP
+- A new Google Cloud Load Balancer routing traffic to public egress IP
 - Quick failover capability using shell commands, Terraform, or Python scripts
 
 ## Infrastructure Implementation
